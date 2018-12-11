@@ -335,8 +335,11 @@ DateTimeFormatSpecifiers:
             
 ApplyStringFormat:
             'apply computed format string:
-            formattedValue = VBA.Strings.Format(v, thisFormat)
-            
+            If thisFormat = "" Then
+                formattedValue = v
+            Else
+                formattedValue = VBA.Strings.format(v, thisFormat)
+            End If
             
 AlignFormattedValue:
             'apply specified alignment specifier:
